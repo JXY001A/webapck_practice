@@ -13,6 +13,11 @@
   "author": "jxy010a",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.5.5",
+    "@babel/plugin-transform-runtime": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.2.0",
     "file-loader": "^4.1.0",
@@ -22,6 +27,7 @@
     "webpack-cli": "^3.3.6"
   },
   "dependencies": {
+    "@babel/runtime": "^7.5.5",
     "dva": "^2.4.1",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"

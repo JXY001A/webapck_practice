@@ -1,8 +1,15 @@
+/*
+ * @description:
+ * @author: JXY
+ * @Date: 2019-08-07 21:37:04
+ * @Email: JXY001a@aliyun.com
+ * @LastEditTime: 2019-08-09 22:37:52
+ */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} =  require('clean-webpack-plugin');
 module.exports = {
-    entry: './src/index.js',
+    entry: './src/index.jsx',
     output: {
         filename: 'bundle_[hash].js',
         path: path.resolve(__dirname, 'dist')
@@ -18,6 +25,11 @@ module.exports = {
             test:/\.(png|svg|jpg|gif)$/,
             use:[
                 'file-loader'
+            ]
+        },{
+            test:/\.(jsx|js)$/,
+            use:[
+                'babel-loader'
             ]
         }],
     },

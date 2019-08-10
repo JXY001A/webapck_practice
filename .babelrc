@@ -1,0 +1,19 @@
+{
+    // 告诉Babel要使用那些插件，这些插件可以控制如何转换代码
+    "plugins": [
+      [
+        "@babel/plugin-transform-runtime",
+        {
+          // options
+          // polyfill 在7.0 已经移除，避免使用
+          //"polyfill":false,
+        }
+      ]
+    ],
+    // 告诉Babel 要转换的源码使用了那些新的语法特性 ,
+    "presets": [
+        "@babel/preset-env",
+        // 转换jsx语法
+        "@babel/preset-react"
+    ]
+}
