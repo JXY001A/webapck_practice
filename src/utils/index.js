@@ -1,3 +1,10 @@
+/*
+ * @description:
+ * @author: JXY
+ * @Date: 2019-08-07 21:42:41
+ * @Email: JXY001a@aliyun.com
+ * @LastEditTime: 2019-08-11 13:49:19
+ */
 // 返回任意数据类型的类型
 export function getObjType(obj) {
     return Object.prototype.toString.call(obj);
@@ -8,6 +15,7 @@ export function getObjType(obj) {
 /**********************具体工具 FUNCTION START*************************/
 // 是否为数组  Array
 export function isArray(obj) {
+    // return Array.isArray(obj);
     return getObjType(obj) == "[object Array]";
 }
 // 是否为字符串 String

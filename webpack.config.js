@@ -3,9 +3,10 @@
  * @author: JXY
  * @Date: 2019-08-07 21:37:04
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-11 12:12:06
+ * @LastEditTime: 2019-08-11 13:52:09
  */
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} =  require('clean-webpack-plugin');
 module.exports = {
@@ -51,10 +52,26 @@ module.exports = {
             ]
         }],
     },
+    // 为你提供了一个简单的 web server，并且具有 live reloading(实时重新加载) 功能
+    devServer:{
+        // 将 dist 目录下的文件 serve 到 localhost:8080
+        contentBase:'./dist',
+        // 开启热启动模式，在重新刷新页面的情况下，更新页面内容
+        hot: true,
+        port:8000,
+        open: true,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:3000',
+                pathRewrite: {'^/api' : ''}
+            }
+        },
+    },
     plugins:[
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
             title:'webapck practice'
         }),
+        new webpack.HotModuleReplacementPlugin(),
     ],
 };
