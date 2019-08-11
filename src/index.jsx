@@ -17,8 +17,13 @@ class ClickCounter extends React.Component {
           count:this.state.count + 1
         });
     }
-
-    componentDidUpdate() {}
+    componentDidMount() {
+        console.log('我已经挂载上去了！');
+    }
+    componentDidUpdate() {
+        console.log('我已经更新了213123123');
+        console.log('我已经更新了213123123');
+    }
 
     render() {
         return [

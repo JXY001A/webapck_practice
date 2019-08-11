@@ -3,13 +3,14 @@
  * @author: JXY
  * @Date: 2019-08-07 21:37:04
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-09 22:37:52
+ * @LastEditTime: 2019-08-11 11:55:57
  */
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} =  require('clean-webpack-plugin');
 module.exports = {
     entry: './src/index.jsx',
+    watch:true,
     output: {
         filename: 'bundle_[hash].js',
         path: path.resolve(__dirname, 'dist')
