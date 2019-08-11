@@ -7,7 +7,7 @@
     "start":"webpack",
     "test": "test",
     "build": "webpack",
-    "watch": "webpack --watch --progress"
+    "watch": "node  nodeStartByWatch"
   },
   "keywords": [
     "webapck"
