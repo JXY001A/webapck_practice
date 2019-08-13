@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-07 21:42:41
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-11 13:49:19
+ * @LastEditTime: 2019-08-13 22:37:36
  */
 // 返回任意数据类型的类型
 export function getObjType(obj) {
@@ -45,4 +45,12 @@ export function isNull(obj) {
 // 是否为 Object
 export function isObject(obj) {
     return getObjType(obj) == "[object Object]";
+}
+
+export function square(x) {
+    return x * x;
+}
+
+export function cube(x) {
+    return x * square(x);
 }

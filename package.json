@@ -1,5 +1,6 @@
 {
   "name": "webpack_dev",
+  "sideEffects": false,
   "version": "1.0.0",
   "description": "webpack learn",
   "main": "index.js",

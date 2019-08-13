@@ -3,14 +3,17 @@
  * @author: JXY
  * @Date: 2019-08-07 21:37:04
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-11 13:52:09
+ * @LastEditTime: 2019-08-13 23:09:09
  */
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} =  require('clean-webpack-plugin');
 module.exports = {
-    entry: './src/index.jsx',
+
+    mode: 'development',
+    // mode: 'production',
+    entry: './src/index.js',
 
     /*
         // <webpack 观察者模式配置方式实现>
@@ -27,8 +30,12 @@ module.exports = {
             poll:1000,
         },
     */
-
-
+    optimization: {
+        // 标注那些导入的模块被使用
+        usedExports: true,
+        // 标注一个模块有哪些被导出的组件
+        providedExports:true,
+    },
     output: {
         filename: 'bundle_[hash].js',
         path: path.resolve(__dirname, 'dist')
@@ -72,6 +79,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             title:'webapck practice'
         }),
-        new webpack.HotModuleReplacementPlugin(),
+        // new webpack.HotModuleReplacementPlugin(),
     ],
 };

@@ -12,8 +12,12 @@
     ],
     // 告诉Babel 要转换的源码使用了那些新的语法特性 ,
     "presets": [
-        "@babel/preset-env",
+        [
+            "@babel/preset-env",{
+                "modules": false
+            }
+        ],
         // 转换jsx语法
-        "@babel/preset-react"
+        // "@babel/preset-react",
     ]
 }
