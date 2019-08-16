@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-07 21:37:04
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-16 22:41:57
+ * @LastEditTime: 2019-08-16 23:08:37
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -14,7 +14,6 @@ module.exports = {
     mode: 'development',
     // mode: 'production',
     entry: './src/index.jsx',
-
     /*
         // <webpack 观察者模式配置方式实现>
 
@@ -30,6 +29,7 @@ module.exports = {
             poll:1000,
         },
     */
+
     optimization: {
         // 标注那些导入的模块被使用
         usedExports: true,
@@ -49,7 +49,17 @@ module.exports = {
                     loader:'css-loader',
                     // 开启css modules
                     options:{
-                        modules: true,
+                        modules:{
+                            /*
+                                path : css 文件路径
+                                name : css 文件名
+                                local: class 名
+                                hash:base64:5: 5为base64字符
+                            */
+                            // localIdentName: '[path][name]__[local]__[hash:base64:5]',
+                            localIdentName: '[name]___[hash:base64:5]',
+                        },
+
                     }
                 }
             ]
