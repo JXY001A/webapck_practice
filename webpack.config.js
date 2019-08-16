@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-07 21:37:04
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-13 23:09:09
+ * @LastEditTime: 2019-08-16 22:41:57
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -13,7 +13,7 @@ module.exports = {
 
     mode: 'development',
     // mode: 'production',
-    entry: './src/index.js',
+    entry: './src/index.jsx',
 
     /*
         // <webpack 观察者模式配置方式实现>
@@ -45,7 +45,13 @@ module.exports = {
             test: /\.css$/,
             use: [
                 'style-loader',
-                'css-loader'
+                {
+                    loader:'css-loader',
+                    // 开启css modules
+                    options:{
+                        modules: true,
+                    }
+                }
             ]
         },{
             test:/\.(png|svg|jpg|gif)$/,
@@ -79,6 +85,6 @@ module.exports = {
         new HtmlWebpackPlugin({
             title:'webapck practice'
         }),
-        // new webpack.HotModuleReplacementPlugin(),
+        new webpack.HotModuleReplacementPlugin(),
     ],
 };

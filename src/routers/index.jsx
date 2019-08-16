@@ -1,5 +1,5 @@
 import React from 'react';
-import {isArray} from '../utils/index';
+import styles from './index.css';
 class App extends React.Component {
     constructor(props) {
         super(props);
@@ -8,11 +8,6 @@ class App extends React.Component {
     }
 
     handleClick() {
-        // this.setState((state) => {
-        //     debugger;
-        //     return {count: state.count + 1};
-        // });
-
         this.setState({
           count:this.state.count + 11
         });
@@ -24,10 +19,11 @@ class App extends React.Component {
     }
 
     render() {
-        return [
-            <button key="1" onClick={this.handleClick}>Update counter</button>,
-            <span key="2">{this.state.count}</span>
-        ]
+        console.log(styles,"styles");
+        return (<div  className = {styles.normal}>
+            first css moudle
+        </div>);
     }
 }
+
 export default App;
