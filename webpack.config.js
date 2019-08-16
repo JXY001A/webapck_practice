@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-07 21:37:04
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-16 23:08:37
+ * @LastEditTime: 2019-08-16 23:45:28
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -60,8 +60,19 @@ module.exports = {
                             localIdentName: '[name]___[hash:base64:5]',
                         },
 
-                    }
-                }
+                    },
+                },
+                'postcss-loader',
+                // 集成postCss
+                // {
+                //     loader: 'postcss-loader',
+                //     options: {
+                //       ident: 'postcss',
+                //       plugins: [
+                //         require('autoprefixer')({}),
+                //       ]
+                //     }
+                // }
             ]
         },{
             test:/\.(png|svg|jpg|gif)$/,
