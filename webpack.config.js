@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-07 21:37:04
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-16 23:45:28
+ * @LastEditTime: 2019-08-17 17:31:48
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -11,8 +11,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} =  require('clean-webpack-plugin');
 module.exports = {
 
-    mode: 'development',
-    // mode: 'production',
+    // mode: 'development',
+    mode: 'production',
     entry: './src/index.jsx',
     /*
         // <webpack 观察者模式配置方式实现>

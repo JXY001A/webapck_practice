@@ -9,7 +9,8 @@
     "test": "test",
     "build": "webpack",
     "analysis": "webpack --profile --json > state.json",
-    "watch": "node  nodeStartByWatch"
+    "watch": "node  nodeStartByWatch",
+    "bundleanalysis": "webpack-bundle-analyzer ./state.json"
   },
   "keywords": [
     "webapck"
@@ -38,6 +39,7 @@
     "@babel/runtime": "^7.5.5",
     "dva": "^2.4.1",
     "react": "^16.8.6",
-    "react-dom": "^16.8.6"
+    "react-dom": "^16.8.6",
+    "webpack-bundle-analyzer": "^3.4.1"
   }
 }
