@@ -1,7 +1,6 @@
 import React from 'react';
-import styles from './index.css';
-import Sass from './sass.jsx';
-class App extends React.Component {
+import styles from './sass.scss';
+class Sass extends React.Component {
     constructor(props) {
         super(props);
         this.state = {count: 0};
@@ -20,12 +19,10 @@ class App extends React.Component {
     }
 
     render() {
-        console.log(styles,"styles");
-        return (<div  className = {styles.normal}>
-            first css moudle
-            <Sass />
+        return (<div  className = {styles.sidebar}>
+           sass 练习
         </div>);
     }
 }
 
-export default App;
+export default Sass;

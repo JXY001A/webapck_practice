@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-07 21:37:04
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-17 17:31:48
+ * @LastEditTime: 2019-08-19 23:42:16
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -73,6 +73,31 @@ module.exports = {
                 //       ]
                 //     }
                 // }
+            ]
+        },
+        {
+            test: /\.scss$/,
+            use: [
+                'style-loader',
+                {
+                    loader:'css-loader',
+                    // 开启css modules
+                    options:{
+                        modules:{
+                            /*
+                                path : css 文件路径
+                                name : css 文件名
+                                local: class 名
+                                hash:base64:5: 5为base64字符
+                            */
+                            // localIdentName: '[path][name]__[local]__[hash:base64:5]',
+                            localIdentName: '[name]___[hash:base64:5]',
+                        },
+
+                    },
+                },
+                'postcss-loader',
+                'sass-loader'
             ]
         },{
             test:/\.(png|svg|jpg|gif)$/,
