@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-07 21:37:04
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-19 23:42:16
+ * @LastEditTime: 2019-08-20 23:06:18
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -37,7 +37,7 @@ module.exports = {
         providedExports:true,
     },
     output: {
-        filename: 'bundle_[hash].js',
+        filename: '[name]_[hash].js',
         path: path.resolve(__dirname, 'dist')
     },
     module: {
