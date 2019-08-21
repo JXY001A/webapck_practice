@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-07 21:37:04
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-21 21:57:59
+ * @LastEditTime: 2019-08-21 23:08:47
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -13,7 +13,14 @@ module.exports = {
 
     // mode: 'development',
     mode: 'production',
-    entry: './src/index.jsx',
+    entry: {
+        index:'./src/index.jsx',
+        commons:[
+            'jquery',
+            'loadsh',
+        ],
+
+    },
     /*
         // <webpack 观察者模式配置方式实现>
 
@@ -35,11 +42,19 @@ module.exports = {
         usedExports: true,
         // 标注一个模块有哪些被导出的组件
         providedExports:true,
+        // 代码分割
+        splitChunks:{
+            chunks:"all"
+        }
     },
     output: {
         filename: '[name]_[hash].js',
         path: path.resolve(__dirname, 'dist')
     },
+    // externals: {
+    //     jquery: 'jQuery',
+    //     loadsh:'loadsh',
+    // },
     module: {
         rules: [{
             test: /\.css$/,
@@ -133,7 +148,9 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
-            _:'loadsh'
+            _:'loadsh',
+            $:'jquery',
+            join:['loadsh','join']
         }),
     ],
 };
