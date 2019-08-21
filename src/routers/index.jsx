@@ -60,6 +60,7 @@ class App extends React.Component {
             <div><button onClick={this.bundle}>点我</button></div>
             <div><button onClick={this.showTitle}>Show Title</button></div>
             <div><button onClick={this.hiddenTitle}>hidden Title</button></div>
+            <div><button onClick={()=>{console.log(_.chunk(Array(24).fill(24*Math.random()),8))}}>shaimming loadsh</button></div>
             <Sass />
         </div>);
     }

@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-07 21:37:04
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-21 21:30:06
+ * @LastEditTime: 2019-08-21 21:57:59
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -132,5 +132,8 @@ module.exports = {
             title:'webapck practice'
         }),
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.ProvidePlugin({
+            _:'loadsh'
+        }),
     ],
 };
