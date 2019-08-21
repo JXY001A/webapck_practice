@@ -56,6 +56,7 @@ class App extends React.Component {
             {
                 showTitle?<Title /> : null
             }
+            {/* <Title /> */}
             <div><button onClick={this.bundle}>点我</button></div>
             <div><button onClick={this.showTitle}>Show Title</button></div>
             <div><button onClick={this.hiddenTitle}>hidden Title</button></div>
