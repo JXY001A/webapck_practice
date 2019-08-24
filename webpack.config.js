@@ -3,7 +3,7 @@
  * @author: JXY
  * @Date: 2019-08-07 21:37:04
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-21 23:08:47
+ * @LastEditTime: 2019-08-24 10:51:54
  */
 const path = require('path');
 const webpack = require('webpack');
@@ -88,7 +88,9 @@ module.exports = {
                 //       ]
                 //     }
                 // }
-            ]
+            ],
+            // 缩小文件搜索范围
+            include:path.resolve(__dirname,'src'),
         },
         {
             test: /\.scss$/,
@@ -113,7 +115,8 @@ module.exports = {
                 },
                 'postcss-loader',
                 'sass-loader'
-            ]
+            ],
+            include:path.resolve(__dirname,'src'),
         },{
             test:/\.(png|svg|jpg|gif)$/,
             use:[
@@ -122,9 +125,17 @@ module.exports = {
         },{
             test:/\.(jsx|js)$/,
             use:[
-                'babel-loader'
-            ]
+                // babel-loader 开启缓存 ，将编译结果缓存至 node_modules/.cache/babel-loader ，或是本地系统的临时文件夹中
+                'babel-loader?cacheDirectory'
+            ],
+            // 配置babel 只转换 src 目录下的文件 jsx | js 文件，降低转换消耗
+            include:path.resolve(__dirname,'src'),
         }],
+    },
+    resolve:{
+        // 当从npm package 中 import 一个模块时，该选项用于判断优先加载源文件提供的那个包，一般位于package.json中的 main(默认) ， browser(浏览器) ，module(node 等) 等指定 ，一般情况向
+        // 大多数模块都只是用 main 模块，所以可直接设置为 main 减少依据target判断
+        mainFields:['main']
     },
     // 为你提供了一个简单的 web server，并且具有 live reloading(实时重新加载) 功能
     devServer:{
@@ -148,8 +159,10 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
+            // 全局导入 loadsh ，jquery 库，无需每次import
             _:'loadsh',
             $:'jquery',
+            // 使用数组路径的方式指定只是用的某些 loadsh 库方法，可直接使用
             join:['loadsh','join']
         }),
     ],
