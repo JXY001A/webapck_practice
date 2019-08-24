@@ -3,22 +3,23 @@
  * @author: JXY
  * @Date: 2019-08-07 21:37:04
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-24 10:51:54
+ * @LastEditTime: 2019-08-24 18:50:27
  */
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const {CleanWebpackPlugin} =  require('clean-webpack-plugin');
+const AddAssetHtmlPlugin = require('add-asset-html-webpack-plugin');
 module.exports = {
 
     // mode: 'development',
     mode: 'production',
     entry: {
         index:'./src/index.jsx',
-        commons:[
-            'jquery',
-            'loadsh',
-        ],
+        // commons:[
+        //     'jquery',
+        //     'loadsh',
+        // ],
 
     },
     /*
@@ -37,19 +38,19 @@ module.exports = {
         },
     */
 
-    optimization: {
-        // 标注那些导入的模块被使用
-        usedExports: true,
-        // 标注一个模块有哪些被导出的组件
-        providedExports:true,
-        // 代码分割
-        splitChunks:{
-            chunks:"all"
-        }
-    },
+    // optimization: {
+    //     // 标注那些导入的模块被使用
+    //     usedExports: true,
+    //     // 标注一个模块有哪些被导出的组件
+    //     providedExports:true,
+    //     // 代码分割
+    //     splitChunks:{
+    //         chunks:"all"
+    //     }
+    // },
     output: {
         filename: '[name]_[hash].js',
-        path: path.resolve(__dirname, 'dist')
+        path: path.resolve(__dirname, 'dist/code')
     },
     // externals: {
     //     jquery: 'jQuery',
@@ -140,7 +141,7 @@ module.exports = {
     // 为你提供了一个简单的 web server，并且具有 live reloading(实时重新加载) 功能
     devServer:{
         // 将 dist 目录下的文件 serve 到 localhost:8080
-        contentBase:'./dist',
+        contentBase:'/dist',
         // 开启热启动模式，在重新刷新页面的情况下，更新页面内容
         hot: true,
         port:8000,
@@ -153,9 +154,11 @@ module.exports = {
         },
     },
     plugins:[
+        // By default, this plugin will remove all files inside webpack's output.path directory
         new CleanWebpackPlugin(),
         new HtmlWebpackPlugin({
-            title:'webapck practice'
+            title:'webapck practice && study',
+            template:'./src/index.html',
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ProvidePlugin({
@@ -165,5 +168,16 @@ module.exports = {
             // 使用数组路径的方式指定只是用的某些 loadsh 库方法，可直接使用
             join:['loadsh','join']
         }),
+        // 引用打包好的 dll 文件
+        new webpack.DllReferencePlugin({
+            // 每个dll文件对应的 manifest.json 的路径
+            manifest: path.resolve(__dirname,'dist/dll/react_manifest.json'),
+        }),
+        new webpack.DllReferencePlugin({
+            // 每个dll文件对应的 manifest.json 的路径
+            manifest: path.resolve(__dirname,'dist/dll/util_manifest.json'),
+        }),
+        // 注入 提前编译号的 dll 文件
+        new AddAssetHtmlPlugin({ filepath: path.resolve(__dirname,'dist/dll/*.dll.js') }),
     ],
 };
