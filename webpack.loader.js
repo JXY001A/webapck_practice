@@ -6,7 +6,6 @@
  * @LastEditTime : 2019-12-28 22:20:56
  */
 const path = require('path');
-const webpack = require('webpack');
 module.exports = {
     mode:'development',
     entry: {
