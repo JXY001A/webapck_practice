@@ -16,7 +16,7 @@ const compiler = webpack(config);
 //  调用编译器watch 方法，启动 watch 模式，并配置参数
 const watching = compiler.watch({
     /* watchOptions 配置 */
-    // 坚挺到文件变化，等待300ms再重新构建，防止更新太快导致编频率过高，出现卡顿情况
+    // 检测到文件变化，等待 300ms 再重新构建，防止更新太快导致编频率过高，出现卡顿情况
     aggregateTimeout: 300,
     // 指定不用监听的文件
     ignored: /node_modules/,
