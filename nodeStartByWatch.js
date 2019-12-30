@@ -3,11 +3,12 @@
  * @author: JXY
  * @Date: 2019-08-11 12:13:23
  * @Email: JXY001a@aliyun.com
- * @LastEditTime: 2019-08-11 12:38:40
+ * @LastEditTime : 2019-12-30 17:55:59
  */
 
 const webpack = require('webpack');
-const config = require('./webpack.config');
+// const config = require('./webpack.config');
+const config = require('./webpack.loader');
 
 // 启动执行 webpack ,拿到编译器
 const compiler = webpack(config);
