@@ -3,9 +3,10 @@
  * @author: JXY
  * @Date: 2019-08-07 21:37:04
  * @Email: JXY001a@aliyun.com
- * @LastEditTime : 2019-12-28 22:20:56
+ * @LastEditTime : 2019-12-30 21:52:41
  */
 const path = require('path');
+const BasicPlugin = require('./plugin/BasicPlugin');
 module.exports = {
     mode:'development',
     entry: {
@@ -27,4 +28,7 @@ module.exports = {
         modules: [ 'node_modules','./loader/'],
     },
     devtool:'inline-source-map',
+    plugins:[
+        new BasicPlugin(),
+    ],
 };
